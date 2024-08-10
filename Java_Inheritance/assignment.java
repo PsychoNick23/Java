@@ -17,6 +17,13 @@ class client{
         this.Creditlimit = Creditlimit;
     }
 
+    void totalCred(){
+        int sum1 = 0;
+        for (int i = 0; i < Creditlimit.length; i++) {
+            sum1 = (int) (sum1 + Creditlimit[i]);
+        }
+        System.out.println("Total Credit: " + sum1);
+    }
 
 }
 
@@ -35,10 +42,13 @@ class orders extends client{
     }
 
 
+
+
 }
 class creditlimit extends orders{
     double[] amount;
     double[] gst;
+
 
 
     public creditlimit(String[] name, String[] city, double[] Creditlimit, String[] orderid, String[] productid, double[] price, double[] amount, double[] gst){
@@ -47,6 +57,17 @@ class creditlimit extends orders{
         this.gst=gst;
 
     }
+
+
+    void totalAmnt(){
+        int sum = 0;
+        for (int i = 0; i < amount.length; i++) {
+            sum = (int) (sum + amount[i]);
+        }
+        System.out.println("Total amount: " + sum);
+    }
+
+
 
 
 
@@ -69,6 +90,8 @@ public class assignment {
         double[] gst1={18,18,18,18,18,18,18,18,18,18};
         creditlimit crd=new creditlimit(name1, city1, Creditlimit1, orderid1, productid1, price1, amount1, gst1);
         crd.output();
+        crd.totalAmnt();
+        crd.totalCred();
 
 
     }
