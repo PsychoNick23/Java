@@ -2,7 +2,7 @@ package company;
 import java.util.*;
 
 public class empmain {
-   ;
+    ;
 
     static Scanner sc = new Scanner(System.in);
 
@@ -18,8 +18,34 @@ public class empmain {
         System.out.println("3:SEARCH");
         System.out.println("4:UPDATE");
         System.out.println("5:DELETE");
-        System.out.println("6:EXIT");
+        System.out.println("6:SORT");
+        System.out.println("7:EXIT");
 
+    }
+
+    static class employeeId implements Comparator<employee>
+    {
+        @Override
+        public int compare(employee arg1,employee arg2){
+            return arg1.EmpId- arg2.EmpId;
+        }
+    }
+
+    static class employeeName implements Comparator<employee>
+    {
+        @Override
+        public int compare(employee arg1,employee arg2){
+            return (int)(arg1.EmpName.compareTo(arg2.EmpName));
+        }
+    }
+
+
+    static class employeeSalary implements Comparator<employee>
+    {
+        @Override
+        public int compare(employee arg1,employee arg2){
+            return arg1.EmpId- arg2.EmpId;
+        }
     }
 
 
@@ -119,9 +145,35 @@ public class empmain {
                         }
                     }
 
+                case 6:
+                    int options;
+                    System.out.println("1: Sort using Employee Id ");
+                    System.out.println("2: Sort using Employee Name");
+                    System.out.println("3: Sort using Employee Salary");
+
+                    System.out.println("Select an option: ");
+                    options= sc.nextInt();
+                    switch(options){
+
+                        case 1 :
+                            Collections.sort(emp,new employeeId());
+                            System.out.println(emp);
+                            break;
+
+                        case 2:
+                            Collections.sort(emp,new employeeName());
+                            System.out.println(emp);
+                            break;
+
+                        case 3:
+                            Collections.sort(emp,new employeeSalary());
+                            System.out.println(emp);
+                            break;
+                    }
+
 
             }
         }
-        while(option!=6);
+        while(option!=7);
     }
 }
