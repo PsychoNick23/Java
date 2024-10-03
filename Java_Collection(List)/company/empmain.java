@@ -2,6 +2,8 @@ package company;
 import java.util.*;
 
 public class empmain {
+   ;
+
     static Scanner sc = new Scanner(System.in);
 
     static char ifContinue(String option){
@@ -20,8 +22,9 @@ public class empmain {
 
     }
 
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
+        List<employee> emp=new ArrayList<employee>();
 
         int option;
         do {
@@ -35,47 +38,90 @@ public class empmain {
                 case 1:
                     char result;
                     do {
-                        List<employee> emp=new ArrayList<employee>();
+
                         System.out.println("Enter Employee Id: ");
                         int EmpId = sc.nextInt();
                         System.out.println("Enter Employee Name");
                         String EmpName = sc.next();
                         System.out.println("Enter Employee Salary");
-                        double Salary=sc.nextDouble();
-                        emp= Collections.singletonList(new employee(EmpId, EmpName, Salary));
+                        double Salary = sc.nextDouble();
+                        emp.add(new employee(EmpId, EmpName, Salary));
 
                         result = ifContinue("Insert");
-                        for (employee r :emp) {
 
-                            // Printing the list
-                            System.out.println(r);
-                        }
                     }
-                    while (result=='Y'||result=='y');
+                    while (result == 'Y' || result == 'y');
 
                     break;
 
                 case 2:
+//                  Display
+//                    for (employee r :emp) {
+//
+//                        // Printing the list
+//                        System.out.println(r);
+//                    }
 
+                    Iterator<employee> itr = emp.iterator();
+                    while (itr.hasNext()) {
+                        System.out.println(itr.next());
+                    }
                     break;
 
                 case 3:
-                    System.out.println("SEARCH");
+                    System.out.println("Enter Employee Id to search: ");
+                    int searchId=sc.nextInt();
+                    for (employee r :emp) {
+                        if(r.getEmpId()==searchId){
+                            System.out.println(r);
+                        }
+
+                    }
+
                     break;
 
                 case 4:
-                    System.out.println("UPDATE");
+//                  Update
+                    System.out.println("Enter Employee Id to update: ");
+                    int empIdToUpdate = sc.nextInt();
 
+                    Iterator<employee> itr1 = emp.iterator();
+                    while (itr1.hasNext()) {
+                        employee up = itr1.next();
+                        if (up.getEmpId() == empIdToUpdate) {
+                            System.out.println("Enter new Employee Name: ");
+                            String newName = sc.next();
+                            up.setEmpName(newName);
+                            System.out.println("Enter new Salary: ");
+                            double newSalary = sc.nextDouble();
+                            up.setSalary(newSalary);
+                            System.out.println("Employee record updated successfully!");
+                            break;
+                        }
+                    }
                     break;
 
+
                 case 5:
-                    System.out.println("DELETE");
+                    System.out.println("Enter Employee Id to delete");
+                    int empno = sc.nextInt();
+
+//                    ListIterator<employee>ob=emp.listIterator();
+
+                    Iterator<employee> itr2 = emp.iterator();
+
+                    while (itr2.hasNext()) {
+                        employee ob = itr2.next();
+                        if (ob.getEmpId() == empno) {
+                            emp.remove(ob);
+                            System.out.println("Record deleted successfully ! ! !");
+                            break;
+                        }
+                    }
 
 
             }
-
         }
         while(option!=6);
     }
-
 }
