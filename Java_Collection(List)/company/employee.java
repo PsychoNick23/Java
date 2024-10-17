@@ -6,9 +6,10 @@ public class employee {
     double Salary;
 
     public employee(int empId, String empName, double salary) {
-        EmpId = empId;
-        EmpName = empName;
-        Salary = salary;
+        super();
+        this.EmpId = empId;
+        this.EmpName = empName;
+        this.Salary = salary;
     }
 
     public int getEmpId() {
