@@ -1,0 +1,5 @@
+24-12-05 05:44 DEBUG :org.example.App[main] Debug Message 
+24-12-05 05:44 INFO :org.example.App[main] Info message 
+24-12-05 05:44 WARN :org.example.App[main] warning message 
+24-12-05 05:44 ERROR :org.example.App[main] error message 
+24-12-05 05:44 FATAL :org.example.App[main] fatal error 
